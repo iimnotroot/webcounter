@@ -1,1 +1,1 @@
-Simple web counter for a GET petition
+Simple web counter for a GET request with cookies
