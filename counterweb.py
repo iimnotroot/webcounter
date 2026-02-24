@@ -8,9 +8,11 @@ def validate_args(args: list[str]):
         print("usage: counterweb.py <port>")
         exit(1)
     try:
-        int(args[1])
+        num: int = int(args[1])
+        if num < 0:
+            raise ValueError("error: port must be a positive integer")
     except ValueError:
-        print("error: port must be a number")
+        print("error: port must be a positive number")
         exit(1)
 
 class Handler(http.server.BaseHTTPRequestHandler):
