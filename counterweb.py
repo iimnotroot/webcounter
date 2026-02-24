@@ -28,8 +28,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if 'counter' in cookies:
             try:
                 current_counter = int(cookies['counter'].value)
-            except ValueError:
-                current_counter = 5
+                if current_counter > 5 or current_counter < 0:
+                    raise ValueError("cookie counter is not a valid number")
+            except ValueError as e:
+                print(f"error: {e}")
+                current_counter = 6
 
             if current_counter == 0:
                 new_counter = 5
